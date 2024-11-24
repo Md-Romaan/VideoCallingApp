@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Video Calling App</title>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="main">
+		<h1 style="text-align: center; color: white; border: 1px dotted white; border-radius: 10px;">Welcome to Automatic Medical Machine</h1>
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+		<div class="signup">
+			<form>
+				<label for="chk" aria-hidden="true">Login</label>
+				<input type="text" id="username" name="username" placeholder="User Name" required="">
+				<input type="password" id="password" name="pswd" placeholder="Password" required="">
+				<button onclick="login(event)">Login</button>
+			</form>
+		</div>
+
+	</div>
+
+</body>
+
+<script>
+	function login(e) {
+		e.preventDefault();
+		const username = document.querySelector("#username").value;
+		const password = document.querySelector("#password").value;
+		if (username === "admin" && password === "admin") {
+			window.location.replace("./dashboard.html");
+			sessionStorage.setItem("loggedIn", true);
+		} else {
+			alert("Invalid Username or Password!");
+		}
+	}
+</script>
+
+</html>

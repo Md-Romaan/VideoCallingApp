@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WebRTC Video conference</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+    <link rel="stylesheet" href="./css/main.css" />
+</head>
+
+<body>
+    <h1 style="background-color: rgb(59, 111, 223); border-radius: 10px; color: white"></h1>
+
+    <div
+        style="display: flex; justify-content: center; border: 1px solid black; padding-top: 10px; padding-bottom: 10px; border-radius: 10px; margin: 0px 50px; background-color: rgb(109, 174, 228); box-shadow: 3px 3px 14px 0px rgba(0,0,0,0.75);">
+        <div style="display: flex; flex-direction: column; width: 25vw;">
+            <div style="display: flex; justify-content: center;">
+                <label for="roomId" style="margin-bottom: 20px; font-size: 20px; font-weight: bold;">Room ID</label>
+            </div>
+            <input id="roomId" type="text" placeholder="Enter Room ID"
+                style="margin-bottom: 10px; padding: 10px 20px; border-radius:5px;" />
+            <div style="display: flex; justify-content: center; gap: 20px;">
+                <button id="joinBtn"
+                    style="margin-bottom: 10px; padding: 5px; border-radius:5px; width: 100px; color: white; font-weight: bold; cursor: pointer;">Join</button>
+                <button id="leaveBtn"
+                    style="margin-bottom: 10px;padding: 5px; border-radius:5px; width: 100px;  color: white; font-weight: bold; cursor: pointer;">Leave</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <p id="notification" style="text-align: center; font-weight: bold; font-style: italic;"></p>
+
+    <div id="localVideo-container">
+        <video autoplay playsinline muted></video>
+    </div>
+
+    <div id="videos">
+        <div id="videoGrid" class="grid-container"></div>
+    </div>
+
+    <script>
+        const userloggedIn = sessionStorage.getItem("loggedIn");
+        if (!userloggedIn) {
+            window.location.replace("/");
+        }
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="js/webrtc.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
